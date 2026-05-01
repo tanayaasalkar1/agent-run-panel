@@ -3,10 +3,10 @@ import { replayFixture } from "./mock/emitter";
 import successFixture from "./mock/fixtures/run_success.json";
 import errorFixture from "./mock/fixtures/run_error.json";
 
-import Controls from "./components/Controls";
-import RunHeader from "./components/RunHeader";
-import TaskList from "./components/TaskList";
-import FinalOutput from "./components/FinalOutput";
+import Controls from "./Components/Controls";
+import RunHeader from "./Components/RunHeader";
+import TaskList from "./Components/TaskList";
+import FinalOutput from "./Components/FinalOutput";
 
 const INITIAL_RUN = {
   runId: null,

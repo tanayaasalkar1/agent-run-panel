@@ -1,4 +1,4 @@
-import ThoughtBubble from "./agent_thought";
+import ThoughtBubble from "./Agent_thought";
 import ToolCallList from "./ToolCallList";
 
 export default function TaskCard({ task }) {
