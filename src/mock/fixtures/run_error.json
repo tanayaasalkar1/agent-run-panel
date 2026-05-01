@@ -1,0 +1,97 @@
+[
+  {
+    "type": "run_started",
+    "run_id": "r_002",
+    "query": "Analyse Tesla gross margin trends vs EV peers (2020–2023)",
+    "timestamp": 1700100000000
+  },
+  {
+    "type": "agent_thought",
+    "task_id": "coordinator",
+    "thought": "Breaking into: (1) Tesla 10-K fetch, (2) peer identification, (3) parallel peer fetches.",
+    "timestamp": 1700100001000
+  },
+  {
+    "type": "task_spawned",
+    "task_id": "t_001",
+    "label": "Fetch Tesla 10-K filings (2020–2023)",
+    "agent": "filing_fetcher",
+    "spawned_by": "coordinator",
+    "parallel_group": null,
+    "depends_on": [],
+    "timestamp": 1700100002000
+  },
+  {
+    "type": "tool_call",
+    "task_id": "t_001",
+    "tool": "sec_edgar_search",
+    "input_summary": "ticker=TSLA, form=10-K, years=2020–2023",
+    "timestamp": 1700100003000
+  },
+  {
+    "type": "tool_result",
+    "task_id": "t_001",
+    "tool": "sec_edgar_search",
+    "output_summary": "4 filings found. Extracting gross margin data...",
+    "timestamp": 1700100005000
+  },
+  {
+    "type": "partial_output",
+    "task_id": "t_001",
+    "content": "Tesla gross margin: 2020 21.3% → 2023 18.2% (declining due to price cuts)",
+    "is_final": true,
+    "quality_score": 0.89,
+    "timestamp": 1700100007000
+  },
+  {
+    "type": "task_update",
+    "task_id": "t_001",
+    "status": "complete",
+    "error": null,
+    "reason": null,
+    "message": null,
+    "timestamp": 1700100008000
+  },
+  {
+    "type": "task_spawned",
+    "task_id": "t_002",
+    "label": "Fetch Rivian 10-K filings (2020–2023)",
+    "agent": "filing_fetcher",
+    "spawned_by": "coordinator",
+    "parallel_group": "ev_peer_fetch",
+    "depends_on": ["t_001"],
+    "timestamp": 1700100009000
+  },
+  {
+    "type": "task_spawned",
+    "task_id": "t_003",
+    "label": "Fetch Lucid Motors 10-K filings (2020–2023)",
+    "agent": "filing_fetcher",
+    "spawned_by": "coordinator",
+    "parallel_group": "ev_peer_fetch",
+    "depends_on": ["t_001"],
+    "timestamp": 1700100009000
+  },
+  {
+    "type": "tool_call",
+    "task_id": "t_002",
+    "tool": "sec_edgar_search",
+    "input_summary": "ticker=RIVN, form=10-K, years=2020–2023",
+    "timestamp": 1700100010000
+  },
+  {
+    "type": "task_update",
+    "task_id": "t_002",
+    "status": "running",
+    "error": null,
+    "reason": null,
+    "message": null,
+    "timestamp": 1700100011000
+  },
+  {
+    "type": "run_error",
+    "run_id": "r_002",
+    "message": "Coordinator encountered an unrecoverable error. Partial results may be available.",
+    "timestamp": 1700100012000
+  }
+]
