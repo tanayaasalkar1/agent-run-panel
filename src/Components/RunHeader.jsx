@@ -1,4 +1,4 @@
-import ThoughtBubble from "./Agent_thought";
+import ThoughtBubble from "./agent_thought";
 import { formatElapsed } from "../utils/formatElapsed";
 
 export default function RunHeader({ run, tasks, coordinatorThoughts }) {
